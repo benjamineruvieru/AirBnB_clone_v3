@@ -30,19 +30,15 @@ def close(exception):
     storage.close()
 
 
-@app.errorhandler(Exception)
+@app.errorhandler(404)
 def global_error_handler(err):
     """
     Global Route to handle All Error Status Codes
     """
-    if err.code is 404:
-        err.description = "Not found"
-        message = {'error': err.description}
-        code = err.code
-    else:
-        message = {'error': err}
-        code = 500
-    return make_response(jsonify(message), code)
+    err.description = "Not found"
+    message = {'error': err.description}
+
+    return jsonify(message)
 
 
 if __name__ == '__main__':
