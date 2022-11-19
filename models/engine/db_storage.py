@@ -81,7 +81,7 @@ class DBStorage:
 
     def count(self, cls=None):
         """This returns the length of objs of class cls"""
-        return (len(self.all(cls))
+        return len(self.all(cls))
 
     def close(self):
         """call remove() method on the private session attribute"""
