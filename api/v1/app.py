@@ -23,7 +23,7 @@ app.register_blueprint(app_views)
 @app.teardown_appcontext
 def close(exception):
     """
-    this method calls .close() 
+    this method calls .close()
     the current SQLAlchemy Session
     """
     storage.close()
