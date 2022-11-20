@@ -31,14 +31,9 @@ def close(exception):
 
 
 @app.errorhandler(404)
-def global_error_handler(err):
-    """
-    Global Route to handle All Error Status Codes
-    """
-    err.description = "Not found"
-    message = {'error': err.description}
-
-    return jsonify(message)
+def not_found(error):
+    """json 404 page"""
+    return make_response(jsonify({"error": "Not found"}), 404)
 
 
 if __name__ == '__main__':
