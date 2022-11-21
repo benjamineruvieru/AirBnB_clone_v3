@@ -28,7 +28,7 @@ def one_city(city_id):
     """Example endpoint returning one city
     Retrieves one city of a given city_id
     """
-    city = storage.get("City", city_id)
+    city = storage.get(City, city_id)
     if city is None:
         abort(404)
     return jsonify(city.to_json())
@@ -39,7 +39,7 @@ def delete_one_city(city_id):
     """Example endpoint deleting one city
     Deletes a state based on the city_id
     """
-    city = storage.get("City", city_id)
+    city = storage.get(City, city_id)
     if city is None:
         abort(404)
     storage.delete(city)
@@ -60,7 +60,7 @@ def create_one_city(state_id):
         return "Not a JSON", 400
     if 'name' not in r.keys():
         return "Missing name", 400
-    s = storage.get("State", state_id)
+    s = storage.get(State, state_id)
     if s is None:
         abort(404)
     # creates the dictionary r as kwargs to create a city object
@@ -75,7 +75,7 @@ def update_one_city(city_id):
     """Example endpoint updates one city
     Updates one city tied with the given state_id based on the JSON body
     """
-    city = storage.get("City", city_id)
+    city = storage.get(City, city_id)
     if city is None:
         abort(404)
     try:
