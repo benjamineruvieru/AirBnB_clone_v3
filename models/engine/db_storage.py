@@ -73,7 +73,7 @@ class DBStorage:
 
     def get(self, cls, id):
         """This returns the obj of id"""
-        search_key = cls.__name__ + '.' + id
+        search_key = cls + '.' + id
         for key, obj in self.__objects.items:
             if key == search_key:
                 return obj
