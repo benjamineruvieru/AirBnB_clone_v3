@@ -74,9 +74,8 @@ class DBStorage:
     def get(self, cls, id):
         """This returns the obj of id"""
         search_key = cls.__name__ + '.' + id
-        for key, obj in classes.items:
-            if key == search_key:
-                return obj
+        if search_key in classes:
+            return classes[search_key]
         return None
 
     def count(self, cls=None):
