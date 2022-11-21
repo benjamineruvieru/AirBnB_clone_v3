@@ -7,6 +7,7 @@ from models import storage
 from api.v1.views import app_views
 from flask import jsonify, request, abort
 from models.city import City
+from models.state import State
 
 
 @app_views.route("/states/<state_id>/cities", methods=["GET"],
@@ -15,7 +16,7 @@ def state_all_cities(state_id):
     """Example endpoint returning a list of all the cities of a state
     Retrieves all the cities of a given state_id
     """
-    state = storage.get("State", state_id)
+    state = storage.get(State, state_id)
     if state is None:
         abort(404)
     all_cities = [city.to_json() for city in state.cities]
